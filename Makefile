@@ -12,6 +12,7 @@ help:
 	@echo "   3. make stop         - stop cloudera-director"
 	@echo "   4. make logs         - view logs"
 	@echo "   5. make purge        - stop and remove the container"
+	@echo ""
 
 build:
 	@docker build --no-cache=true --tag=${USER}/cloudera-director .

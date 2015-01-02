@@ -1,2 +1,4 @@
 #!/bin/bash
 service cloudera-director-server start
+echo "Please use 'docker stop CONTAINER_ID' to stop this instance"
+bash
