@@ -1,0 +1,7 @@
+[cloudera-director]
+# Packages for Cloudera Director, Version 1, on RedHat or CentOS 6 x86_64           	  
+name=Cloudera Director
+baseurl=http://archive.cloudera.com/director/redhat/6/x86_64/director/1/
+gpgkey = http://archive.cloudera.com/director/redhat/6/x86_64/director/RPM-GPG-KEY-cloudera    
+gpgcheck = 1
+
