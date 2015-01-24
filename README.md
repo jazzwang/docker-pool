@@ -5,11 +5,11 @@ Docker Image for Cloudera Director
 
 ### 1. Pull Docker Image ###
 
-    docker pull jazzwang/cloudera-manager
+    docker pull jazzwang/cloudera-director
 
 ### 2. Create Docker Instance ###
 
-    docker create -it --name director jazzwang/cloudera-manager
+    docker create -it --name director -h director -p 7189:7189 jazzwang/cloudera-director 
 
 ### 3. Start Docker Instance ###
 
