@@ -1,0 +1,18 @@
+#!/bin/bash
+## install sbt and git ##
+echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
+apt-get update
+apt-get -y install sbt git
+## Reference - https://mahout.apache.org/users/sparkbindings/play-with-shell.html
+### 1. Download Apache Spark 1.1.1 and unpack the archive file
+cd /opt
+wget http://ftp.twaren.net/Unix/Web/apache/spark/spark-1.1.1/spark-1.1.1.tgz
+tar zxvf spark-1.1.1.tgz
+ln -s /opt/spark-1.1.1 /opt/spark
+cd /opt/spark
+### 2. Change to the directory where you unpacked Spark and type 'sbt/sbt assembly' to build it 
+sbt/sbt assembly
+### 3. Create a directory for Mahout somewhere on your machine, change to there and checkout 
+###    the master branch of Apache Mahout from GitHub
+cd /opt
+git clone https://github.com/apache/mahout mahout
