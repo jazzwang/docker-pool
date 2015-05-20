@@ -6,7 +6,7 @@ apt-get -y install sbt git
 ## Reference - https://mahout.apache.org/users/sparkbindings/play-with-shell.html
 ### 1. Download Apache Spark 1.1.1 and unpack the archive file
 cd /opt
-wget http://ftp.twaren.net/Unix/Web/apache/spark/spark-1.1.1/spark-1.1.1.tgz
+wget http://archive.apache.org/dist/spark/spark-1.1.1/spark-1.1.1.tgz
 tar zxvf spark-1.1.1.tgz
 ln -s /opt/spark-1.1.1 /opt/spark
 cd /opt/spark
