@@ -16,3 +16,6 @@ sbt/sbt assembly
 ###    the master branch of Apache Mahout from GitHub
 cd /opt
 git clone https://github.com/apache/mahout mahout
+### 4. Change to the mahout directory and build mahout using mvn -DskipTests clean install
+cd /opt/mahout
+mvn -DskipTests clean install
