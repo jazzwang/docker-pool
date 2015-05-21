@@ -2,6 +2,7 @@
 ## install sbt and git ##
 echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
 apt-get update
+apt-get install -y apt-utils ### FIX warning about 'missing apt-utils'
 apt-get install -y --force-yes sbt git openssh-server net-tools
 ## Reference - https://mahout.apache.org/users/sparkbindings/play-with-shell.html
 ### 1. Download Apache Spark 1.1.1 and unpack the archive file
