@@ -14,11 +14,12 @@ cd /opt/spark
 sbt/sbt assembly
 ### 3. Create a directory for Mahout somewhere on your machine, change to there and checkout 
 ###    the master branch of Apache Mahout from GitHub
-cd /opt
-git clone https://github.com/apache/mahout mahout
 ### 4. Change to the mahout directory and build mahout using mvn -DskipTests clean install
-cd /opt/mahout
-mvn -DskipTests clean install
+### ----- Jazz's Note: Use Mahout 0.10.0 Release instead
+cd /opt
+wget http://archive.apache.org/dist/mahout/0.10.0/mahout-distribution-0.10.0.tar.gz
+tar zxvf mahout-distribution-0.10.0.tar.gz
+ln -s /opt/mahout-distribution-0.10.0 /opt/mahout
 ### SSH key exchange
 cd ~
 mkdir -p /root/.ssh
