@@ -2,7 +2,7 @@
 ## install sbt and git ##
 echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
 apt-get update
-apt-get -y install sbt git
+apt-get install -y --force-yes sbt git openssh-server net-tools
 ## Reference - https://mahout.apache.org/users/sparkbindings/play-with-shell.html
 ### 1. Download Apache Spark 1.1.1 and unpack the archive file
 cd /opt
@@ -19,3 +19,8 @@ git clone https://github.com/apache/mahout mahout
 ### 4. Change to the mahout directory and build mahout using mvn -DskipTests clean install
 cd /opt/mahout
 mvn -DskipTests clean install
+### SSH key exchange
+cd ~
+mkdir -p /root/.ssh
+ssh-keygen -P "" -t rsa -f /root/.ssh/id_rsa
+cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
