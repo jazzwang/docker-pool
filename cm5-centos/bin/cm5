@@ -1,0 +1,44 @@
+#!/bin/bash
+case "$1" in
+build)
+	echo "[32;1m[INFO] Building new cm5 docker image ...[0m"
+	docker build --no-cache=true --tag=jazzwang/cm5:latest .
+	;;
+new)
+	echo "[32;1m[INFO] Creating new cm5 docker instances ...[0m"
+	docker create -it --name cm5 -h cm5.etu.im -v ${PWD}:/vagrant jazzwang/cm5:latest /bin/bash
+	;;
+start)
+	echo "[32;1m[INFO] Starting cm5 docker instances ...[0m"
+	docker start cm5
+	;;
+login)
+	docker exec -it cm5 /bin/bash
+	;;
+stop)
+	echo "[32;1m[INFO] Stoping cm5 docker instances ...[0m"
+	docker stop cm5
+	;;
+status)
+	docker ps -a | grep "cm5 "
+	if [ "$?" == "0" ]; then
+	  IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' cm5)
+	  echo "Please visit http://${IP}:7180 for Cloudera Manager Web UI"
+	else
+	  echo "There is no instance of cm5."
+	fi
+	;;
+log)
+	docker logs cm5
+	;;
+rm)
+	echo "[32;1m[INFO] Removing cm5 docker instances ...[0m"
+	docker rm cm5
+	;;
+purge)
+	docker rmi jazzwang/cm5
+	;;
+*)
+	echo "Usage: $0  [ build | new | start | login | stop | status | log | rm | purge ]"
+	;;
+esac

@@ -1,0 +1,5 @@
+#!/bin/bash
+yum -y install epel-release wget tar gzip
+yum -y install puppet puppet-server
+puppet module install razorsedge/cloudera --verbose --debug
+puppet apply /app/spark.pp --verbose --debug
