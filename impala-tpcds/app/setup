@@ -1,0 +1,27 @@
+#!/bin/bash
+## Reference:
+## [1] https://github.com/cloudera/impala-tpcds-kit
+
+yum -y install gcc make flex bison byacc git
+cd ${HOME}
+git clone https://github.com/grahn/tpcds-kit.git
+cd tpcds-kit/tools
+make -f Makefile.suite
+cd ${HOME}
+git clone https://github.com/cloudera/impala-tpcds-kit.git
+cd ${HOME}/impala-tpcds-kit
+cat > dn.txt << EOF
+master
+EOF
+su - hdfs -c "hdfs dfs -mkdir -p /user/root"
+su - hdfs -c "hdfs dfs -chown root:root /user/root"
+su - hdfs -c "hdfs dfs -chmod 777 /user/root"
+./push-bits.sh
+./set-nodenum.sh
+./hdfs-mkdirs.sh
+./gen-dims.sh
+./gen-facts.sh
+./impala-create-external-tables.sh
+./impala-load-dims.sh
+./impala-load-store_sales.sh
+./impala-compute-stats.sh

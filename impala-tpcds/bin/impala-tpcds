@@ -1,0 +1,31 @@
+#!/bin/bash
+case "$1" in
+new)
+	echo "[32;1m[INFO] Creating new Impala TPC-DS docker instances ...[0m"
+	docker create -it --name TPC-DS -h tpc-ds jazzwang/impala-tpcds /bin/bash
+	;;
+start)
+	echo "[32;1m[INFO] Starting Impala TPC-DS docker instances ...[0m"
+	docker start TPC-DS
+	;;
+login)
+	docker exec -it TPC-DS /bin/bash
+	;;
+stop)
+	echo "[32;1m[INFO] Stoping Impala TPC-DS docker instances ...[0m"
+	docker stop TPC-DS
+	;;
+status)
+	docker ps -a | grep "TPC-DS "
+	;;
+log)
+	docker logs TPC-DS
+	;;
+rm)
+	echo "[32;1m[INFO] Removing Impala TPC-DS docker instances ...[0m"
+	docker rm TPC-DS
+	;;
+*)
+	echo "Usage: $0  [ new | start | login | stop | status | log | rm ]"
+	;;
+esac
