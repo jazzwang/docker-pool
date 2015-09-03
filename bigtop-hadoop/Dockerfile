@@ -4,5 +4,5 @@
 FROM ubuntu:latest
 MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
 
-OPY app/ /app/
+COPY app/ /app/
 RUN  /app/setup
