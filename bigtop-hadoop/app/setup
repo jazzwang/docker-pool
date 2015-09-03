@@ -1,0 +1,13 @@
+#!/bin/bash
+apt-get -y install wget
+## setup bigtop related apt repository
+wget -O /etc/apt/sources.list.d/bigtop.list http://archive.apache.org/dist/bigtop/bigtop-1.0.0/repos/trusty/bigtop.list
+apt-get -y update
+## install bigtop related packages
+apt-get install -y --force-yes vim locales openjdk-7-jre-headless bigtop-utils hadoop-conf-pseudo w3m unzip
+## format NameNode
+/etc/init.d/hadoop-hdfs-namenode init
+## start HDFS
+for i in hadoop-hdfs-namenode hadoop-hdfs-datanode ; do sudo service $i start ; done
+## initialize HDFS
+sudo /usr/lib/hadoop/libexec/init-hdfs.sh
