@@ -8,6 +8,23 @@ wget -q -O /etc/apt/sources.list.d/bigtop.list http://archive.apache.org/dist/bi
 apt-get -y update
 ## install bigtop related packages
 apt-get install -y -q --force-yes --no-install-recommends -o APT::Immediate-Configure=false openjdk-7-jre-headless bigtop-utils hadoop-conf-pseudo
+## enable WebHDFS and append
+sed -i 's#</configuration>##' /etc/hadoop/conf/hdfs-site.xml
+cat >> /etc/hadoop/conf/hdfs-site.xml << EOF
+  <property>
+    <name>dfs.webhdfs.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>dfs.support.append</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>dfs.support.broken.append</name>
+    <value>true</value>
+  </property>
+</configuration>
+EOF
 ## format NameNode
 /etc/init.d/hadoop-hdfs-namenode init
 ## start HDFS
@@ -18,5 +35,6 @@ for i in hadoop-hdfs-namenode hadoop-hdfs-datanode ; do service $i start ; done
 for i in hadoop-hdfs-namenode hadoop-hdfs-datanode ; do service $i stop ; done
 ## clean up
 apt-get -y autoremove --purge wget
-apt-get clean
+apt-get autoclean
 rm -rf /var/lib/apt/lists/*
+rm -rf /var/log/hadoop-hdfs/*
