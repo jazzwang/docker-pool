@@ -1,12 +1,13 @@
 #!/bin/bash
 apt-get -y update
-apt-get -y install wget
+DEBIAN_FRONTEND=noninteractive
+apt-get -y -o APT::Immediate-Configure=false install wget
 ## setup bigtop related apt repository
 wget -q http://archive.apache.org/dist/bigtop/bigtop-0.8.0/repos/GPG-KEY-bigtop -O- | apt-key add
 wget -q -O /etc/apt/sources.list.d/bigtop.list http://archive.apache.org/dist/bigtop/bigtop-0.8.0/repos/trusty/bigtop.list
 apt-get -y update
 ## install bigtop related packages
-apt-get install -y -q --force-yes --no-install-recommends openjdk-7-jre-headless bigtop-utils hadoop-conf-pseudo
+apt-get install -y -q --force-yes --no-install-recommends -o APT::Immediate-Configure=false openjdk-7-jre-headless bigtop-utils hadoop-conf-pseudo
 ## format NameNode
 /etc/init.d/hadoop-hdfs-namenode init
 ## start HDFS
