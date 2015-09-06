@@ -1,7 +1,4 @@
-## Reference:
-## [1] https://github.com/sameersbn/docker-gitlab
-
-FROM ubuntu:latest
+FROM jazzwang/openjdk-7-jre-headless
 MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
 
 COPY app/ /app/
