@@ -36,4 +36,7 @@ purge: stop
 	@docker rm director >/dev/null
 
 logs:
-	@docker logs -f director
+	@docker logs director
+
+clean:
+	@docker rmi ${USER}/cloudera-director

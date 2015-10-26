@@ -7,4 +7,4 @@ MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
 COPY app/ /app/
 RUN /app/setup/install
 
-ENTRYPOINT /app/init
+ENTRYPOINT ["/app/init"]
