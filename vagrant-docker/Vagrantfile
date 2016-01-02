@@ -1,0 +1,18 @@
+NUM_BOXES = 2
+
+Vagrant.configure("2") do |config|
+  # use loop to generate multiple VMs with similar configurations
+  (1..NUM_BOXES).each do |i|
+    docker_name = "vm#{i}"
+    config.hostmanager.enabled = false
+    config.vm.define "vm#{i}".to_sym do |vm1|
+      vm1.vm.provider :docker do |d|
+        d.image = "jesselang/debian-vagrant:jessie"
+        d.has_ssh = true
+        d.name = docker_name
+        d.create_args = ["-h","#{docker_name}"]
+      end
+      vm1.vm.provision :hostmanager
+    end
+  end
+end
