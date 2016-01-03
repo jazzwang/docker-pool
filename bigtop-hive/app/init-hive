@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+/etc/init.d/hadoop-hdfs-namenode restart
+/etc/init.d/hadoop-hdfs-datanode restart
+/etc/init.d/hbase-master         restart
+/etc/init.d/hbase-regionserver   restart
+/bin/bash
