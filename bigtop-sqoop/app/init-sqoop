@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+/etc/init.d/hadoop-hdfs-namenode restart
+/etc/init.d/hadoop-hdfs-datanode restart
+/etc/init.d/hadoop-yarn-resourcemanager    restart
+/etc/init.d/hadoop-yarn-nodemanager        restart
+/etc/init.d/hadoop-mapreduce-historyserver restart
+/bin/bash
