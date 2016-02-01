@@ -1,0 +1,9 @@
+#!/bin/bash
+apt-get -y update
+DEBIAN_FRONTEND=noninteractive
+## install bigtop related packages
+apt-get install -y -q --force-yes --no-install-recommends -o APT::Immediate-Configure=false pig
+## clean up
+apt-get autoclean
+rm -rf /var/lib/apt/lists/*
+rm -rf /var/log/hadoop-hdfs/*
