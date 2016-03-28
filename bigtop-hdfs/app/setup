@@ -7,7 +7,7 @@ wget -q http://archive.apache.org/dist/bigtop/bigtop-1.0.0/repos/GPG-KEY-bigtop 
 wget -q -O /etc/apt/sources.list.d/bigtop.list http://archive.apache.org/dist/bigtop/bigtop-1.0.0/repos/trusty/bigtop.list
 apt-get -y update
 ## install bigtop related packages
-apt-get install -y -q --force-yes --no-install-recommends -o APT::Immediate-Configure=false openjdk-7-jre-headless bigtop-utils hadoop-conf-pseudo
+apt-get install -y -q --force-yes --no-install-recommends -o APT::Immediate-Configure=false openjdk-7-jre-headless bigtop-utils hadoop-conf-pseudo net-tools
 ## enable WebHDFS and append
 sed -i 's#</configuration>##' /etc/hadoop/conf/hdfs-site.xml
 cat >> /etc/hadoop/conf/hdfs-site.xml << EOF
