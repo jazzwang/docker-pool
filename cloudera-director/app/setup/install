@@ -1,0 +1,10 @@
+#!/bin/bash
+## Reference:
+## [1] https://github.com/sameersbn/docker-gitlab
+
+set -e
+
+export JDK_URL=http://download.oracle.com/otn-pub/java/jdk/7u71-b14/jdk-7u71-linux-x64.rpm
+
+/app/setup/jdk/install
+/app/setup/cloudera-director/install

@@ -1,0 +1,11 @@
+#!/bin/bash
+## Reference:
+## [1] https://github.com/Ingensi/docker-oracle-jdk
+
+export JDK_FILE=$(basename $JDK_URL)
+
+yum -y install wget
+echo "Downloading from $JDK_URL as $JDK_FILE"
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL -O /tmp/$JDK_FILE
+rpm -ivh /tmp/$JDK_FILE
+rm -f /tmp/$JDK_FILE

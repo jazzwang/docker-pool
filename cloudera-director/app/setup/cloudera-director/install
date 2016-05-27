@@ -1,0 +1,12 @@
+#!/bin/bash
+
+## Reference:
+## [1] http://www.cloudera.com/content/cloudera/en/downloads/cloudera-director/1-0-2.html
+## [2] http://www.cloudera.com/content/cloudera/en/documentation/cloudera-director/latest/PDF/cloudera-director.pdf
+
+DIR=$(dirname $0)
+
+rpm --import $DIR/RPM-GPG-KEY-cloudera
+cp $DIR/cloudera-director.repo /etc/yum.repos.d/
+
+yum -y install cloudera-director-server cloudera-director-client
