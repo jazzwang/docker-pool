@@ -14,6 +14,7 @@ RUN sed -i 's#httpredir.debian.org#free.nchc.org.tw#g' /etc/apt/sources.list && 
     dpkg -i jmxtrans-259.deb && \
     rm -f jmxtrans-259.deb && \
     sed -i 's#LOG_LEVEL=debug#LOG_LEVEL=info#g' /etc/default/jmxtrans && \
+    ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime && \
     apt-get -y autoremove --purge  && \
     apt-get clean  && \
     rm -rf /var/lib/apt/lists/* && \
