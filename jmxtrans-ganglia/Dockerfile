@@ -13,6 +13,7 @@ RUN sed -i 's#httpredir.debian.org#free.nchc.org.tw#g' /etc/apt/sources.list && 
     wget http://central.maven.org/maven2/org/jmxtrans/jmxtrans/259/jmxtrans-259.deb && \
     dpkg -i jmxtrans-259.deb && \
     rm -f jmxtrans-259.deb && \
+    sed -i 's#LOG_LEVEL=debug#LOG_LEVEL=info#g' /etc/default/jmxtrans && \
     apt-get -y autoremove --purge  && \
     apt-get clean  && \
     rm -rf /var/lib/apt/lists/* && \
