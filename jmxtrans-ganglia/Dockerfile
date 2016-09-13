@@ -2,6 +2,7 @@ FROM debian:latest
 MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
 
 COPY ./entrypoint.sh /entrypoint.sh
+COPY ./index.html    /var/www/html/index.html
 
 RUN sed -i 's#httpredir.debian.org#free.nchc.org.tw#g' /etc/apt/sources.list && \
     export TERM=xterm && \
