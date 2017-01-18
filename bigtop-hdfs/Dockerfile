@@ -1,4 +1,4 @@
-FROM jazzwang/openjdk-7-jre-headless
+FROM openjdk:7-jre
 MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
 
 COPY app/ /app/
