@@ -3,6 +3,6 @@
 FROM centos:centos7
 MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
 
-RUN yum -y install gcc make rubygems rpm-build epel-release ruby-devel && \
+RUN yum -y install wget gcc make rubygems rpm-build epel-release ruby-devel && \
     gem install fpm -V --no-rdoc && \
     yum clean all
