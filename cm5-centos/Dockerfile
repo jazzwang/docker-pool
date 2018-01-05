@@ -5,4 +5,4 @@ FROM centos:centos6
 MAINTAINER Jazz Wang <jazzwang.tw@gmail.com>
 
 COPY app/ /app/
-RUN  /app/setup
+RUN  /app/cm5-base

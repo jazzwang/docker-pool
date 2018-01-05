@@ -4,6 +4,8 @@ yum -y install epel-release wget tar gzip ntp openssh-clients openssh-server
 ## install cloudera manager related packages
 cd /etc/yum.repos.d
 wget http://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo
+## uncomment this line to force building docker image with CDH 5.3
+# sed -i 's#cm/5/#cm/5.3/#' cloudera-manager.repo
 yum -y install oracle-j2sdk1.7 cloudera-manager-agent cloudera-manager-server-db-2 cloudera-manager-server
 ## configure JDK 1.7 provided by Cloudera
 ln -s /usr/java/jdk1.7.0_67-cloudera /usr/java/default
