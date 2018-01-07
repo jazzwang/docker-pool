@@ -6,7 +6,9 @@ build)
 	;;
 new)
 	echo "[32;1m[INFO] Creating new cm5 docker instances ...[0m"
-	docker create -it --name cm5 -h cm5.etu.im -v ${PWD}:/vagrant jazzwang/cm5:latest /bin/bash
+	# known issue: could not open session in docker container (Centos 6.5) #7040
+	# https://github.com/moby/moby/issues/7040
+	docker create -it --name cm5 -h master --cap-add sys_resource -v ${PWD}:/vagrant jazzwang/cm5:latest /bin/bash
 	;;
 start)
 	echo "[32;1m[INFO] Starting cm5 docker instances ...[0m"
