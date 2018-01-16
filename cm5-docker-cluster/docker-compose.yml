@@ -1,0 +1,37 @@
+version: '2'
+services:
+  master:
+    build: ./cm5-base
+    image: jazzwang/cm5:5.3
+    hostname: master
+    container_name: cm5-master
+    stdin_open: true
+    tty: true
+    cap_add:
+      - SYS_RESOURCE
+      - SYS_PTRACE
+    expose: 
+      - 7180
+    ports:
+      - 7180:7180     # Cloudera Manager Web UI
+      - 8042:8042     # YARN NodeManager Web UI
+      - 8088:8088     # YARN ResourceManager Web UI
+      - 8888:8888     # Hue 
+      - 19888:19888   # YARN HistoryServer Web UI
+      - 50070:50070   # HDFS NameNode Web UI
+      - 50075:50075   # HDFS DataNode Web UI
+      - 50090:50090   # HDFS SecondaryNameNode Web UI
+    volumes:
+      - ./app:/app
+      - ./master:/opt/cloudera
+    command: /app/start-master.sh
+  worker:
+    image: jazzwang/cm5:5.3
+    container_name: cm5-worker
+    hostname: worker
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./app:/app
+      - ./worker:/opt/cloudera
+    command: /app/start-worker.sh
